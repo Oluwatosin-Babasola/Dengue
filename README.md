@@ -133,79 +133,30 @@ Population
 
 Negative binomial model for overdispersed count data.
 
-cases_it ~ NegBin(mu_it, dispersion)
-
+$cases_it ~ NegBin(mu_it, dispersion)$
+$Y_{it} --cases; \kappa --dispersion$
 ### Linear predictor
+The expected number of dengue cases in municipality \(i\) during week \(t\) is modeled as:
+ 
+$\log(\mu_{it}) =\log(P_{i})$ + $\beta_0+ \beta_1 Z_{\mathrm{temp},it}+ \beta_2 Z_{\mathrm{rain},it}+ \beta_3 Z_{\mathrm{humidity},it}+ \beta_4 Z_{\mathrm{density},i}$+ $\gamma_{y(t)} + u_i.$
 
-log(mu_it) = log(pop_i)
-+ intercept
-+ beta × standardized climate
-+ year random effect
-+ spatial ICAR effect
 
-Where:
+where:
 
-* log(pop_i) is a population offset
-* beta represents climate-associated multiplicative change in per capita risk
-* ICAR captures spatial autocorrelation
-* Year effect captures interannual variability
-
-Inference performed using variational inference via ADVI in PyMC.
-
----
-
-## Figures Generated
-
-Figure 1
-Annual dengue burden maps (2020–2025)
-
-Figure 2
-Cumulative dengue burden map (2020–2025)
-
-Figure 3
-National weekly time series
-
-Figure 4
-Spatial autocorrelation assessment
-
-Figure 5
-Hotspot maps
-
-Figure 6
-Climate-adjusted residual burden (log scale)
-
-Figure 7
-Exceedance probability maps
-
-Figure 8
-Posterior climate effects on per capita dengue risk
-
-Figure 10
-Observed versus fitted counts for pooled 2020–2025 model
+- $P_i$: Municipality population, included as a log offset.
+- $\beta_0$: Intercept.
+- $Z_{\mathrm{temp},it}$: Standardized weekly temperature.
+- $Z_{\mathrm{rain},it}$: Standardized weekly cumulative rainfall.
+- $Z_{\mathrm{humidity},it}$: Standardized weekly relative humidity.
+- $Z_{\mathrm{density},i}$: Standardized log population density.
+- $\beta_1,\ldots,\beta_4$: Regression coefficients.
+- $\gamma_{y(t)}$: Year-specific random effect.
+- $u_i$: Municipality-level spatial random effect with an intrinsic conditional autoregressive (ICAR) prior.
 
 ---
 
 
-## Environment
 
-All modeling and preprocessing performed in:
 
-Conda environment: chirps_netcdf
-Python version: 3.11
-Key libraries:
-
-* pandas
-* geopandas
-* numpy
-* matplotlib
-* pymc
-* arviz
-* xarray
-* netCDF4
-
-To activate:
-
-conda activate chirps_netcdf
-jupyter notebook
 
 
