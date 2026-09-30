@@ -19,7 +19,6 @@ To estimate the climate-associated spatiotemporal dynamics of confirmed dengue b
 3. Identifying municipalities with residual burden after climate adjustment
 4. Evaluating model adequacy and spatial smoothing behavior
 
-The work emphasize on  inference rather than short-term prediction.
 
 ---
 
